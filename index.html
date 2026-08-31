@@ -18,7 +18,7 @@
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      max-width: 800px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 60px 24px 100px;
       line-height: 1.6;
@@ -75,32 +75,50 @@
     .project video { width: 100%; border-radius: 8px; margin: 12px 0; }
     .project iframe { width: 100%; border-radius: 8px; margin: 12px 0; }
     */
-    .skills-grid {
-      display: flex;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .skills-grid .card {
+    #skills .card {
       background: var(--card);
       border-radius: 10px;
       padding: 18px 22px;
     }
-    .skills-grid h3 {
+    #skills h3 {
       color: var(--accent);
       font-size: 1rem;
       margin: 0 0 10px;
     }
-    .skills-grid ul {
+    #skills ul {
       margin: 0;
       padding-left: 20px;
     }
-    .skills-grid li {
+    #skills li {
       color: var(--muted);
       margin-bottom: 4px;
+    }
+    .skills-wide {
+      margin-bottom: 20px;
+    }
+    .skills-wide ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 28px;
+      padding-left: 20px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
     }
     a { color: var(--accent); }
   </style>
 </head>
+
+
+
+
+
+
+
+
+
 <body>
 
   <header>
@@ -172,22 +190,25 @@
 
     <section id="skills">
     <h2>Skills</h2>
+
+    <div class="card skills-wide">
+      <h3>My Coursework</h3>
+      <ul>
+        <li>Circuit Theory(Honors)</li>
+        <li>Analog Electronics</li>
+        <li>Logic Design of Digital Systems</li>
+        <li>Semiconductor Device Design</li>
+        <li>Engineering Electromagnetic Theory</li>
+        <li>System Design</li>
+        <li>Communication Systems</li>
+        <li>Principle of Feedback Control</li>
+        <li>Applied Numerical Computing</li>
+        <li>Probability and Statistic</li>
+      </ul>
+    </div>
+
     <div class="skills-grid">
-  
-      <div class="card">
-        <h3>EE Fundamentals & Coursework</h3>
-        <ul>
-          <li>Circuit Theory</li>
-          <li>Analog Electronics</li>
-          <li>Digital Logic Design</li>
-          <li>Semiconductor Physics</li>
-          <li>Semiconductor Design</li>
-          <li>Electromagnetic Theory</li>
-          <li>System Design</li>
-          <li>Communication Systems</li>
-        </ul>
-      </div>
-  
+
       <div class="card">
         <h3>Programming & Software Tools</h3>
         <ul>
@@ -201,7 +222,7 @@
           <li>GitLab</li>
         </ul>
       </div>
-  
+
       <div class="card">
         <h3>RF & Communications</h3>
         <ul>
@@ -211,7 +232,7 @@
           <li>Digital Signal Processing (DSP)</li>
         </ul>
       </div>
-  
+
       <div class="card">
         <h3>CAD & Simulation</h3>
         <ul>
@@ -222,7 +243,7 @@
           <li>Simulink</li>
         </ul>
       </div>
-  
+
       <div class="card">
         <h3>Hardware & Lab</h3>
         <ul>
@@ -235,7 +256,7 @@
           <li>Microcontrollers (ESP32, Arduino Mega, MSP432)</li>
         </ul>
       </div>
-  
+
     </div>
   </section>
   
