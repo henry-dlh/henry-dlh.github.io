@@ -6,6 +6,26 @@
   <title>Dun-Lin (Henry) Huang</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .header-text {
+      flex: 1;
+      min-width: 220px;
+    }
+    .profile-photo {
+      width: 350px;
+      height: 320px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+    }
     :root {
       --bg: #0e1420;
       --card: #161d2e;
@@ -23,6 +43,9 @@
       padding: 60px 24px 100px;
       line-height: 1.6;
     }
+
+
+
     header { margin-bottom: 48px; }
     h1 { font-size: 2.2rem; margin-bottom: 4px; }
     .subtitle { color: var(--muted); font-size: 1.1rem; margin: 0; }
@@ -122,12 +145,17 @@
 <body>
 
   <header>
-    <h1>Dun-Lin (Henry) Huang</h1>
-    <p class="subtitle">Electrical Engineering @ UCLA</p>
-    <div class="links">
-      <a href="mailto:henryhuang.dl@gmail.com">Email</a>
-      <a href="https://henry-dlh.github.io/" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/dun-lin-huang/" target="_blank">LinkedIn</a>
+    <div class="header-content">
+      <div class="header-text">
+        <h1>Dun-Lin (Henry) Huang</h1>
+        <p class="subtitle">Electrical Engineering @ UCLA</p>
+        <div class="links">
+          <a href="mailto:henryhuang.dl@gmail.com">Email</a>
+          <a href="https://github.com/henry-dlh" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/dun-lin-huang/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+      <img src="images/profile.jpeg" alt="Photo of Dun-Lin Huang" class="profile-photo">
     </div>
   </header>
 
