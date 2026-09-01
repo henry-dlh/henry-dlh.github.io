@@ -163,6 +163,14 @@
       border: none;
     }
 
+    
+    .project-media img.photo-track {
+      width: 120%;
+    }
+    .project-media img.photo-car {
+      width: 60%;
+    }    
+
 
 
 
@@ -324,13 +332,26 @@
         This is an autonomous robot that follows a line on the floor and handles intersections entirely on its own, built on the MSP432 microcontroller. I designed the whole control loop myself — reading eight IR sensors to track the line, feeding that into a custom PD controller to keep the robot centered, and layering in intersection detection so it could recognize a checkpoint and execute a full spin without any human input. I also built in adaptive speed control, so it moves faster on straightaways and automatically slows through turns instead of running at one fixed speed the whole course.
       </p>
 
+
       <div class="project-media">
+        <div class="media-photos">
+          <figure>
+            <figcaption>Race track used for autonomous vehicle</figcaption>
+            <img src="images/AV_track.png" alt="Line-following vehicle hardware" class="photo-track"> 
+          </figure>
+          <figure>
+            <figcaption>The MSP432 robotic vehicle</figcaption>
+            <img src="images/AV_car.png" alt="Line-following vehicle hardware" class="photo-car">
+          </figure>
+        </div>
+
         <div class="video-vertical">
           <iframe src="https://www.youtube.com/embed/IyncR_Kaufw"
             title="Line-following vehicle demo" frameborder="0" allowfullscreen></iframe>
         </div>
-        <img src="images/linefollower-1.jpg" alt="Line-following vehicle hardware">
       </div>
+
+
 
       <ul>
         <li>Built an MSP432-based robot with 8 IR sensors, PWM motor control, and a custom weighted PD controller</li>
