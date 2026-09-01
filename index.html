@@ -26,6 +26,32 @@
       border: 2px solid var(--accent);
       flex-shrink: 0;
     }
+    .about-content {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .about-text {
+      flex: 1;
+      min-width: 260px;
+      margin: 0;
+    }
+    .about-photos {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .about-photos img {
+      width: 140px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid var(--accent);
+    }
+
+
     :root {
       --bg: #fdf6ec;
       --card: #ffffff;
@@ -220,19 +246,25 @@
 
   <section id="about">
     <h2>About</h2>
-    <p>
-      I'm a UCLA Electrical Engineering student, 
-      and what I like most is taking a system from a rough idea 
-      to something I've actually built, tested, and proven to work. 
-      I'm drawn to the hands-on side of EE — 
-      building the physical thing, not just simulating it — 
-      and I look for projects that push me across the whole stack, 
-      from circuit design and firmware to 
-      live testing and real-world validation. 
-      I've led a cross-functional team through a full build cycle, 
-      and I care more about proving a design actually works than 
-      assuming it does.
-    </p>
+    <div class="about-content">
+      <p class="about-text">
+        I'm a UCLA Electrical Engineering student, 
+        and what I like most is taking a system from a rough idea 
+        to something I've actually built, tested, and proven to work. 
+        I'm drawn to the hands-on side of EE — 
+        building the physical thing, not just simulating it — 
+        and I look for projects that push me across the whole stack, 
+        from circuit design and firmware to 
+        live testing and real-world validation. 
+        I've led a cross-functional team through a full build cycle, 
+        and I care more about proving a design actually works than 
+        assuming it does.
+      </p>
+      <div class="about-photos">
+        <img src="images/profile_yosemite.jpeg" alt="Photo of Dun-Lin Huang">
+        <img src="images/profile_zion.jpeg" alt="Photo of Dun-Lin Huang">
+      </div>
+    </div>
   </section>
 
   <section id="projects">
