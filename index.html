@@ -190,6 +190,14 @@
     }
 
 
+    .project-media img.plot-img,
+    .project-media-stacked img.plot-img {
+      height: 220px;
+      width: 100%;
+      object-fit: contain;
+      background: #ffffff;
+      border: 1px solid var(--border);
+    }
 
     /* Uncomment and point at your own files to add media to a project:
     .project img { width: 100%; border-radius: 8px; margin: 12px 0; }
@@ -350,21 +358,51 @@
 
     <div class="project">
       <h3>SDR Wireless Communication System — Electromagnetic Systems</h3>
-      <span class="dates">Dec 2025 – Feb 2026</span>
+      <span class="dates">Dec 2025 – Feb 2026</span>      
+      
+      <p class="project-desc">
+        Wireless links rarely work as cleanly as they do in simulation. Between two independent Pluto software defined radios, small mismatches in oscillator frequency, unknown timing offsets, and multipath propagation all distort a transmitted signal before it reaches the receiver, and left uncorrected, they collapse a clean constellation into noise. For this project I built a full transmit and receive baseband pipeline in Python, handling everything from QAM symbol mapping and pulse shaping on the transmit side to frequency offset correction, frame synchronization, and equalization on the receive side. I worked independently on getting signals sent over the air between two physical radios to decode correctly, not just simulate cleanly on paper, and used that pipeline to test how techniques like matched filtering and OFDM actually perform under real transmit conditions.
+      </p>
+
+      <div class="project-media-stacked">
+        <div class="media-photos-row">
+          <figure>
+            <img src="images/sdr-pulse-shape.png" alt="Effective pulse shape after RRC filtering" class="plot-img">
+            <figcaption>Effective pulse shape after root raised cosine filtering, used to control transmit bandwidth and limit intersymbol interference before the signal enters the channel.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/sdr-cross-correlation.png" alt="Magnitude of cross correlation used for frame synchronization" class="plot-img">
+            <figcaption>Magnitude of the cross correlation between the received signal and a known preamble. The sharp periodic peaks let the receiver locate exactly where each frame starts under noise and channel distortion.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/sdr-ser-matched-filter.png" alt="Symbol error rate vs transmit gain, matched filter comparison" class="plot-img">
+            <figcaption>Symbol error rate versus transmit gain for 64 QAM and 256 QAM, comparing matched filtering against no matched filtering. Matched filtering consistently reduced the error rate across the tested range.</figcaption>
+          </figure>
+        </div>
+      </div>
+
       <ul>
-        <li>Achieved end-to-end QPSK transmission and reception across SDRs by building a Python baseband pipeline with RRC pulse shaping, pilot-based channel equalization, and symbol detection</li>
-        <li>Corrected CFO between two Pluto SDRs using 4th-power estimation and cross-correlation frame sync, reducing SER by 40% and eliminating constellation rotation</li>
-        <li>Implemented OFDM with FFT/IFFT subcarrier mapping and cyclic prefix to mitigate ISI under multipath</li>
-        <li>Demonstrated matched filter SNR gain across 64-QAM and 256-QAM at varying transmit gains, confirming consistent SER improvement</li>
+        <li><strong>End to end QPSK transmission:</strong> Built a complete Python baseband pipeline including RRC pulse shaping, pilot based channel equalization, and symbol detection, then used it to transmit and receive real QPSK signals over the air between two Pluto SDRs.</li>
+        <li><strong>Frequency offset correction:</strong> Estimated and corrected the carrier frequency offset between two Pluto SDRs using 4th power estimation combined with cross correlation based frame synchronization, cutting the symbol error rate by roughly 40% and eliminating the constellation rotation that CFO otherwise introduces.</li>
+        <li><strong>OFDM for multipath resilience:</strong> Implemented an OFDM transceiver with FFT and IFFT based subcarrier mapping and a cyclic prefix to combat intersymbol interference caused by multipath propagation, extending the pipeline beyond single carrier transmission.</li>
+        <li><strong>Matched filter performance validation:</strong> Measured symbol error rate across a range of transmit gains for both 64 QAM and 256 QAM, comparing matched filtering against no matched filtering, confirming that matched filtering consistently reduced error rate even as modulation order increased.</li>
       </ul>
+
     </div>
 
+    
     <div class="project">
       <h3>3D Printed Robotic Arm — Power Electronics</h3>
       <span class="dates">July 2025</span>
+        
+      <p class="project-desc">
+        Controlling a multi joint robotic arm in real time means solving two problems at once. You need a mechanism that can actually hold together and move smoothly under load, and control logic that translates a person's input into coordinated joint motion instantly, with no lag between hand and arm. For this project I designed and 3D printed a 3 DOF robotic arm with a gear driven gripper, then built the electronics and firmware to drive it. I mapped potentiometer input through an Arduino Mega to PWM signals for each joint, giving direct real time manual control over every axis of motion.
+      </p>
+
       <ul>
-        <li>Fabricated and integrated a 3D-printed 3-DOF robotic arm with gear-driven gripper, programming Arduino Mega to map PWM signals from potentiometers for real-time manual joint control</li>
-        <li>Demonstrated pick-and-place capability across 4 servo motors with grasping, lifting, and 360° horizontal rotation</li>
+        <li><strong>3D printed mechanical design:</strong> Designed and fabricated a 3 DOF robotic arm in CAD, then 3D printed and assembled the structure with a gear driven gripper, giving it enough mechanical range to grasp, lift, and rotate objects while keeping backlash low across the gear train.</li>
+        <li><strong>Real time manual joint control:</strong> Programmed an Arduino Mega to continuously read potentiometer input from each joint and map it to PWM signals for four servo motors, so the arm responded to hand input instantly with no perceptible lag between input and motion.</li>
+        <li><strong>Pick and place demonstration:</strong> Validated the full system by demonstrating pick and place tasks across all four servos, combining grasping, lifting, and full 360 degree horizontal rotation to move objects from one location to another under manual control.</li>
       </ul>
     </div>
 
