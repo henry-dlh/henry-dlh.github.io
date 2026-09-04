@@ -172,6 +172,23 @@
     }    
 
 
+    .project-media-stacked {
+      grid-template-columns: 1fr;
+    }
+    .media-photos-row {
+      display: flex;
+      gap: 10px;
+    }
+    .media-photos-row figure {
+      flex: 1;
+      margin: 0;
+    }
+    .media-photos-row figcaption {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
+
 
 
     /* Uncomment and point at your own files to add media to a project:
@@ -286,24 +303,48 @@
       <span class="dates">Dec 2025 – June 2026</span>
 
       <p class="project-desc">
-        HeatSense is a safety system that watches a stovetop with a thermal camera and a PIR motion sensor, 
-        then warns before a fire starts. I led a 4-person team on this one, splitting the build across hardware, 
-        firmware, and testing and keeping us on track with a shared Gantt chart. My own piece was the embedded pipeline
-         — pulling frames off the thermal array through an ESP32, then combining thermal rate-of-change with 
-         PIR presence data so the classifier could tell "someone's actively cooking" apart from "the stove 
-         was left on unattended." 
-         We validated the whole system together through a live-fire test campaign before calling it done.
+      Stovetop fires are one of the most common causes of home fires,
+      and most of them start the same way — someone gets distracted and 
+      forgets a burner is still on. HeatSense is a safety system built
+      to catch that moment: it watches a stovetop with a thermal camera
+      and a PIR motion sensor, then warns before a small oversight turns 
+      into a fire. The core of the system is an embedded pipeline that pulls 
+      frames off a thermal array through an ESP32, 
+      then combines thermal rate-of-change with PIR presence data
+      so the classifier can tell "someone's actively cooking" apart
+      from "the stove was left on unattended." The whole system was 
+      validated through a live-fire test campaign before calling it done. 
       </p>
 
-      <div class="project-media">
-        <iframe width="100%" height="360" src="https://www.youtube.com/embed/1tHLdUXk8lQ"
-          title="HeatSense demo" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe>
+    <div class="project-media project-media-stacked">
+      <div class="media-photos-row">
+        <figure>
+          <img src="images/heatsense_CAD.png" alt="HeatSense 3D-printed enclosure">
+          <figcaption>Heatsense enclosure CAD design</figcaption>
+        </figure>
+        <figure>
+          <img src="images/heatsense_dashboard.png" alt="HeatSense live thermal dashboard">
+          <figcaption>HeatSense live thermal dashboard</figcaption>
+        </figure>
       </div>
+      
+      <figcaption>
+        This clip shows a live-fire test: a pan heats up on the stovetop while 
+        HeatSense monitors it in real time. As the temperature climbs past a safe 
+        threshold with no one detected nearby, the system recognizes the pattern and 
+        triggers an alert — this is the actual validation test used to confirm the classifier 
+        could tell a genuinely unattended, overheating stove apart from normal cooking, 
+        not just a simulated demo.
+      </figcaption>
+      <iframe width="100%" height="600" src="https://www.youtube.com/embed/1tHLdUXk8lQ"
+        title="HeatSense demo" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe>
+    </div>
 
       <ul>
-        <li>Built an embedded ESP32 pipeline streaming live thermal heatmap data to a web dashboard</li>
-        <li>Designed and validated the safety classifier through iterative live-fire testing</li>
-        <li>Designed the 3D-printed enclosure and led a 4-person team to deliver on schedule</li>
+        <li><strong>Real-time dashboard:</strong> every frame from the thermal array streams over WebSocket to a live heatmap view, so readings can be watched and verified as they happen instead of only reviewed after the fact.</li>
+        <li><strong>Filter benchmarking:</strong> after comparing Gaussian and Box spatial filters across different kernel sizes, the chosen filter cut sensor noise enough to boost signal quality by over 13 dB, while still running fast enough (14.77 ms per frame) to keep up with the ESP32 in real time — a real tradeoff, since heavier filtering usually costs more processing time.</li>
+        <li><strong>Live-fire validation:</strong> rather than testing on simulated data, the classifier was validated against real stovetop scenarios, landing at a 5% false alarm rate — low enough that the system wouldn't be a nuisance to actually live with.</li>
+        <li><strong>Enclosure design:</strong> the sensor and MCU had to survive real heat exposure without overheating themselves, so the 3D-printed enclosure went through several iterations to thermally isolate the electronics from the stovetop environment.</li>
       </ul>
     </div>
 
